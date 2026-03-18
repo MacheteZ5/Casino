@@ -1,30 +1,45 @@
-
 def welcome_menu() -> None:
     print("Welcome to Silver and Gold Casino")
     print("Have fun in the three different games offered by our Casino")
-    print("First of all, you must deposit an amount into your account in order to play", end="\n\n")
+    print(
+        "First of all, you must deposit an amount into your account in order to play",
+        end="\n\n",
+    )
+
 
 def deposit_amout() -> float:
     account_value = 0.0
     while True:
         try:
-            account_value = float(input("Enter the amount you wish to add to your account: "))
-            if(account_value > 0):
+            account_value = float(
+                input("Enter the amount you wish to add to your account: ")
+            )
+            if account_value > 0:
                 break
             else:
-                print("\n\n The value to be entered must only be a positive numeric value",  end="\n\n")
+                print(
+                    "\n\n The value to be entered must only be a positive numeric value",
+                    end="\n\n",
+                )
         except ValueError as error:
             print(f"\n\n An error has occurred: {error}")
             print("The value entered is not a numeric value")
-            print("The value to be entered must only be a positive numeric value", end="\n\n")
+            print(
+                "The value to be entered must only be a positive numeric value",
+                end="\n\n",
+            )
     return account_value
+
 
 def game_menu() -> int:
     option = 0
     while True:
         try:
-            options = [1,2,3]
-            print("Select one of the following games offered by our casino to play", end="\n\n")
+            options = [1, 2, 3]
+            print(
+                "Select one of the following games offered by our casino to play",
+                end="\n\n",
+            )
             print("1. Moneda (Cara o Cruz)")
             print("2. Slots Simple")
             print("3. 21 Blue Jack")
@@ -38,24 +53,32 @@ def game_menu() -> int:
             print(f"An error has occurred: {error}")
             print("You must enter only the values ​​from the menu", end="\n\n")
     return option
-    
-def show_statistics(win_counter : int, loss_counter : int, game_counter : int, account_value: int):
+
+
+def show_statistics(
+    win_counter: int, loss_counter: int, game_counter: int, account_value: int
+):
     print(f"Number of games played: {game_counter}")
     print(f"Number of games won: {win_counter}")
     print(f"Number of games lost: {loss_counter}")
-    print(f"Final amount in account: {0 if account_value < 0 else account_value}", end="\n\n")
+    print(
+        f"Final amount in account: {0 if account_value < 0 else account_value}",
+        end="\n\n",
+    )
 
-def exit_game_menu(account_value : float) -> bool:
+
+def exit_game_menu(account_value: float) -> bool:
     exit_game = True if (account_value <= 0) else False
-    if(exit_game == False):
-        exit_game = exit_game_menu_by_player()    
+    if not exit_game:
+        exit_game = exit_game_menu_by_player()
     return exit_game
+
 
 def exit_game_menu_by_player() -> bool:
     option = 0
     while True:
         try:
-            options = [1,2]
+            options = [1, 2]
             print("Do you want to exit the game?", end="\n\n")
             print(" 1. Yes\n 2. No", end="\n\n")
             option = int(input("Enter the option here: "))
