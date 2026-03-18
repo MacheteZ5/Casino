@@ -1,5 +1,5 @@
-from modules.Menu.menu import welcome_menu, deposit_amout, game_menu, exit_game_menu, show_statistics
-from modules.Game.game import coin_game, slot_game, blue_jack
+from src.Menu.menu import welcome_menu, deposit_amout, game_menu, exit_game_menu, show_statistics
+from src.Game.game import coin_game, slot_game, blue_jack
 
 def main():
     welcome_menu()
