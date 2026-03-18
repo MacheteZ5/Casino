@@ -40,9 +40,9 @@ def game_menu() -> int:
     return option
     
 def show_statistics(win_counter : int, loss_counter : int, game_counter : int, account_value: int):
-    print(f"The number of games played were: {game_counter}")
-    print(f"The number of games won: {win_counter}")
-    print(f"The number of games lost: {loss_counter}")
+    print(f"Number of games played: {game_counter}")
+    print(f"Number of games won: {win_counter}")
+    print(f"Number of games lost: {loss_counter}")
     print(f"Final amount in account: {0 if account_value < 0 else account_value}", end="\n\n")
 
 def exit_game_menu(account_value : float) -> bool:
@@ -57,7 +57,7 @@ def exit_game_menu_by_player() -> bool:
         try:
             options = [1,2]
             print("Do you want to exit the game?", end="\n\n")
-            print("1. Yes\n 2. No", end="\n\n")
+            print(" 1. Yes\n 2. No", end="\n\n")
             option = int(input("Enter the option here: "))
             if option in options:
                 break
