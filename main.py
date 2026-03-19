@@ -22,22 +22,14 @@ def main():
         match selected_game:
             case 1:
                 result = coin_game(account_value)
-                account_value = result[0]
-                win_counter = win_counter + 1 if result[1] == "v" else win_counter
-                loss_counter = loss_counter if result[1] == "v" else loss_counter + 1
-                game_counter += 1
             case 2:
                 result = slot_game(account_value)
-                account_value = result[0]
-                win_counter = win_counter + 1 if result[1] == "v" else win_counter
-                loss_counter = loss_counter if result[1] == "v" else loss_counter + 1
-                game_counter += 1
             case 3:
                 result = blue_jack(account_value)
-                account_value = result[0]
-                win_counter = win_counter + 1 if result[1] == "v" else win_counter
-                loss_counter = loss_counter if result[1] == "v" else loss_counter + 1
-                game_counter += 1
+        account_value = result[0]
+        win_counter = win_counter + 1 if result[1] == "v" else win_counter
+        loss_counter = loss_counter if result[1] == "v" else loss_counter + 1
+        game_counter += 1
         print("------------------------------------------" * 4, end="\n\n")
         exit_game = exit_game_menu(account_value)
         print("------------------------------------------" * 4, end="\n\n")
