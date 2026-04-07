@@ -12,7 +12,7 @@ def deposit_amout() -> float:
     while True:
         try:
             account_value = float(
-                input("Enter the amount you wish to add to your account: ")
+                input("Enter the amount you wish to add to your account: ").strip()
             )
             if account_value > 0:
                 break
@@ -22,7 +22,7 @@ def deposit_amout() -> float:
                     end="\n\n",
                 )
         except ValueError as error:
-            print(f"\n\n An error has occurred: {error}")
+            print(f"\n\nAn error has occurred: {error}")
             print("The value entered is not a numeric value")
             print(
                 "The value to be entered must only be a positive numeric value",
@@ -32,27 +32,21 @@ def deposit_amout() -> float:
 
 
 def game_menu() -> int:
-    option = 0
     while True:
-        try:
-            options = [1, 2, 3]
-            print(
-                "Select one of the following games offered by our casino to play",
-                end="\n\n",
-            )
-            print("1. Moneda (Cara o Cruz)")
-            print("2. Slots Simple")
-            print("3. 21 Blue Jack")
-            option = int(input("Enter the option here: "))
-            if option in options:
-                break
-            else:
-                print("\n\n You must enter only the values ​​from the menu", end="\n\n")
-        except ValueError as error:
-            print("\n\n Error: The entered value is not a valid option.")
-            print(f"An error has occurred: {error}")
-            print("You must enter only the values ​​from the menu", end="\n\n")
-    return option
+        options = ["1", "2", "3"]
+        print(
+            "Select one of the following games offered by our casino to play",
+            end="\n\n",
+        )
+        print("1. Coin Game (Heads or Tails)")
+        print("2. Slot Game")
+        print("3. 21 Blue Jack")
+        option = input("Enter the option here: ").strip()
+        if option in options:
+            break
+        else:
+            print("\n\nYou must enter only the values ​​from the menu", end="\n\n")
+    return int(option)
 
 
 def show_statistics(
@@ -75,19 +69,13 @@ def exit_game_menu(account_value: float) -> bool:
 
 
 def exit_game_menu_by_player() -> bool:
-    option = 0
     while True:
-        try:
-            options = [1, 2]
-            print("Do you want to exit the game?", end="\n\n")
-            print(" 1. Yes\n 2. No", end="\n\n")
-            option = int(input("Enter the option here: "))
-            if option in options:
-                break
-            else:
-                print("\n\n You must enter only the values ​​from the menu", end="\n\n")
-        except ValueError as error:
-            print("\n\n Error: The entered value is not a valid option.")
-            print(f"An error has occurred: {error}")
-            print("You must enter only the values ​​from the menu", end="\n\n")
-    return True if (option == 1) else False
+        options = ["1", "2"]
+        print("Do you want to exit the game?", end="\n\n")
+        print(" 1. Yes\n 2. No", end="\n\n")
+        option = input("Enter the option here: ").strip()
+        if option in options:
+            break
+        else:
+            print("\n\nYou must enter only the values ​​from the menu", end="\n\n")
+    return True if (option == "1") else False

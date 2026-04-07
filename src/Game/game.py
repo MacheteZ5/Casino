@@ -1,10 +1,10 @@
-import random
+from random import randint
 
 
 def coin_game(account_value: float) -> list:
     amount_wagered = __validate_entrey_amount_bet(account_value)
     option_selected_by_player = __game_options("coin_game")
-    coin_result = random.randint(1, 2)
+    coin_result = randint(1, 2)
     result = "v" if (coin_result == option_selected_by_player) else "d"
     if result == "v":
         account_value += amount_wagered
@@ -17,9 +17,9 @@ def coin_game(account_value: float) -> list:
 
 def slot_game(account_value: float) -> list:
     amount_wagered = __validate_entrey_amount_bet(account_value)
-    first_value = random.randint(1, 3)
-    second_value = random.randint(1, 3)
-    third_value = random.randint(1, 3)
+    first_value = randint(1, 3)
+    second_value = randint(1, 3)
+    third_value = randint(1, 3)
     if first_value == second_value == third_value:
         result = "v"
         account_value += amount_wagered * 4
@@ -37,19 +37,17 @@ def slot_game(account_value: float) -> list:
 
 def blue_jack(account_value: float) -> list:
     amount_wagered = __validate_entrey_amount_bet(account_value)
-    first_value_player = random.randint(2, 12)
-    second_value_player = random.randint(2, 12)
-    first_value_casino = random.randint(2, 12)
-    second_value_casino = random.randint(2, 12)
+    first_value_player = randint(2, 12)
+    second_value_player = randint(2, 12)
+    first_value_casino = randint(2, 12)
+    second_value_casino = randint(2, 12)
     print(
         f"The cards for the player are: {first_value_player}, {second_value_player}, Sum: {first_value_player + second_value_player}",
         end="\n\n",
     )
     print(f"The first card for the casino is: {first_value_casino}", end="\n\n")
     option_selected_by_player = __game_options("blue_jack")
-    third_value_player = (
-        0 if (option_selected_by_player == "1") else random.randint(2, 12)
-    )
+    third_value_player = 0 if (option_selected_by_player == 1) else randint(2, 12)
     sum_player = first_value_player + second_value_player + third_value_player
     sum_casino = first_value_casino + second_value_casino
     print(f"Player: {sum_player}, Casino: {sum_casino}")
@@ -82,7 +80,7 @@ def blue_jack(account_value: float) -> list:
 def __validate_entrey_amount_bet(account_value: float) -> float:
     while True:
         try:
-            amount_wagered = float(input("Enter the amount you wish to bet: "))
+            amount_wagered = float(input("Enter the amount you wish to bet: ").strip())
             if 0 < amount_wagered <= account_value:
                 return amount_wagered
             else:
@@ -101,21 +99,16 @@ def __validate_entrey_amount_bet(account_value: float) -> float:
 
 def __game_options(game_type) -> int:
     while True:
-        try:
-            options = [1, 2]
-            print("Select one of the following options", end="\n\n")
-            print("1. Play directly" if game_type == "blue_jack" else "1. Heads")
-            print(
-                "2. Get another card for the player"
-                if game_type == "blue_jack"
-                else "2. Tails"
-            )
-            option_selected_by_player = int(input("Enter the option here: "))
-            if option_selected_by_player in options:
-                return option_selected_by_player
-            else:
-                print("\nYou must enter only the values ​​from the menu", end="\n\n")
-        except ValueError as error:
-            print("\nError: The entered value is not a valid option.")
-            print(f"An error has occurred: {error}")
-            print("You must enter only the values ​​from the menu", end="\n\n")
+        options = ["1", "2"]
+        print("Select one of the following options", end="\n\n")
+        print("1. Play directly" if game_type == "blue_jack" else "1. Heads")
+        print(
+            "2. Get another card for the player"
+            if game_type == "blue_jack"
+            else "2. Tails"
+        )
+        option_selected_by_player = input("Enter the option here: ").strip()
+        if option_selected_by_player in options:
+            return int(option_selected_by_player)
+        else:
+            print("\nYou must enter only the values ​​from the menu", end="\n\n")
