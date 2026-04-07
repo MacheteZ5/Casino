@@ -85,14 +85,14 @@ def __validate_entrey_amount_bet(account_value: float) -> float:
                 return amount_wagered
             else:
                 print(
-                    "\nThe value to be entered must only be a positive numeric value",
+                    "\nThe value to be entered must only be a positive numeric value and need to be less than or equal to the value in your account",
                     end="\n\n",
                 )
         except ValueError as error:
             print(f"\nAn error has occurred: {error}")
             print("The value entered is not a numeric value")
             print(
-                "The value to be entered must only be a positive numeric value",
+                "The value to be entered must only be a positive numeric value and need to be less than or equal to the value in your account",
                 end="\n\n",
             )
 
