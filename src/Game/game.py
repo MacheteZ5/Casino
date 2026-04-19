@@ -1,7 +1,7 @@
 from random import randint
 
 
-def coin_game(account_value: float) -> list:
+def coin_game(account_value: float) -> tuple:
     amount_wagered = __validate_entrey_amount_bet(account_value)
     option_selected_by_player = __game_options("coin_game")
     coin_result = randint(1, 2)
@@ -12,10 +12,10 @@ def coin_game(account_value: float) -> list:
     else:
         account_value -= amount_wagered
         print("The player lost")
-    return [account_value, result]
+    return account_value, result
 
 
-def slot_game(account_value: float) -> list:
+def slot_game(account_value: float) -> tuple:
     amount_wagered = __validate_entrey_amount_bet(account_value)
     first_value = randint(1, 3)
     second_value = randint(1, 3)
@@ -32,10 +32,10 @@ def slot_game(account_value: float) -> list:
         account_value -= amount_wagered
         result = "v"
         print("The player lost")
-    return [account_value, result]
+    return account_value, result
 
 
-def blue_jack(account_value: float) -> list:
+def blue_jack(account_value: float) -> tuple:
     amount_wagered = __validate_entrey_amount_bet(account_value)
     first_value_player = randint(2, 12)
     second_value_player = randint(2, 12)
@@ -74,7 +74,7 @@ def blue_jack(account_value: float) -> list:
         result = "d"
         account_value -= amount_wagered
         print("The player lost")
-    return [account_value, result]
+    return account_value, result
 
 
 def __validate_entrey_amount_bet(account_value: float) -> float:

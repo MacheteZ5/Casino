@@ -16,7 +16,7 @@ def main():
     win_counter = 0
     loss_counter = 0
     game_counter = 0
-    result = []
+    result = (0.0, "")
     while True:
         selected_game = game_menu()
         print("------------------------------------------" * 4, end="\n\n")
